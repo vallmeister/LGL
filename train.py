@@ -68,13 +68,13 @@ if __name__ == '__main__':
 
     # Datasets
     train_data = continuum(root=args.data_root, name='ogbn-arxiv', data_type='train', download=True, k_hop=args.k)
-    train_loader = Data.DataLoader(dataset=train_data, batch_size=args.batch_size, shuffle=True,
+    train_loader = Data.DataLoader(dataset=train_data, batch_size=10, shuffle=True,
                                    collate_fn=graph_collate, drop_last=True)
     test_data = continuum(root=args.data_root, name='ogbn-arxiv', data_type='test', download=True, k_hop=args.k)
-    test_loader = Data.DataLoader(dataset=test_data, batch_size=args.batch_size, shuffle=False,
+    test_loader = Data.DataLoader(dataset=test_data, batch_size=10, shuffle=False,
                                   collate_fn=graph_collate, drop_last=True)
     valid_data = continuum(root=args.data_root, name='ogbn-arxiv', data_type='valid', download=True, k_hop=args.k)
-    valid_loader = Data.DataLoader(dataset=valid_data, batch_size=args.batch_size, shuffle=False,
+    valid_loader = Data.DataLoader(dataset=valid_data, batch_size=10, shuffle=False,
                                    collate_fn=graph_collate, drop_last=True)
 
     Net = nets['plain']

@@ -1,14 +1,13 @@
 import os
-import dgl
-import tqdm
-import torch
 import os.path
+
+import dgl
 import numpy as np
-import scipy.sparse as sp
+import torch
 from dgl import DGLGraph
 from dgl.data import citegrh
-from itertools  import compress
 from torchvision.datasets import VisionDataset
+
 from .continuumLS import ContinuumLS
 from .continuumOGB import ContinuumOGB
 
