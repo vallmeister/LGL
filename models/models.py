@@ -160,8 +160,9 @@ class PlainNet(nn.Module):
     @torch.no_grad()
     def feature_adjacency(self, x, y):
         fadj = torch.stack([torch.einsum('ca,ncb->ab', x[i], y[i]) for i in range(x.size(0))])
-        fadj += fadj.transpose(-2, -1)
-        return self.row_normalize(self.sgnroot(fadj))
+        fadj2 = fadj.clone()
+        fadj2 += fadj.transpose(-2, -1)
+        return self.row_normalize(self.sgnroot(fadj2))
 
     @torch.no_grad()
     def sgnroot(self, x):
